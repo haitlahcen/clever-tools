@@ -11,7 +11,7 @@ function openWebSocket (url, authorization) {
     let pingInterval;
 
     ws.on('open', () => {
-      Logger.debug('Websocket opened successfully: ' + url);
+      Logger.warn('Websocket opened successfully: ' + url);
       ws.send(JSON.stringify({
         message_type: 'oauth',
         authorization: authorization,
@@ -31,13 +31,13 @@ function openWebSocket (url, authorization) {
     });
 
     ws.on('close', () => {
-      Logger.debug('Websocket closed. ' + Date.now());
+      Logger.warn('Websocket closed. ' + Date.now());
       clearInterval(pingInterval);
       sink(new Bacon.End());
     });
 
     ws.on('error', (e) => {
-      Logger.debug('Websocket errored.' + e);
+      Logger.warn('Websocket errored.' + e + ' ' + Date.now());
       clearInterval(pingInterval);
       sink(new Bacon.End());
     });
