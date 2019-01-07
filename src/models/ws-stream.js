@@ -18,7 +18,7 @@ function openWebSocket (url, authorization) {
       }));
       pingInterval = setInterval(() => {
         ws.send('["ping"]');
-      }, 40000);
+      }, 1000);
     });
 
     ws.on('message', (data) => {
