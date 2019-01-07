@@ -36,8 +36,8 @@ function openWebSocket (url, authorization) {
       sink(new Bacon.End());
     });
 
-    ws.on('error', () => {
-      Logger.debug('Websocket closed.');
+    ws.on('error', (e) => {
+      Logger.debug('Websocket errored.' + e);
       clearInterval(pingInterval);
       sink(new Bacon.End());
     });
