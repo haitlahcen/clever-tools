@@ -31,7 +31,7 @@ function openWebSocket (url, authorization) {
     });
 
     ws.on('close', () => {
-      Logger.debug('Websocket closed.');
+      Logger.debug('Websocket closed. ' + Date.now());
       clearInterval(pingInterval);
       sink(new Bacon.End());
     });
