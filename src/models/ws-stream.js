@@ -30,8 +30,8 @@ function openWebSocket (url, authorization) {
       }
     });
 
-    ws.on('close', () => {
-      Logger.warn('Websocket closed. ' + Date.now());
+    ws.on('close', (e) => {
+      Logger.warn('Websocket closed. ' + e + ' ' + Date.now());
       clearInterval(pingInterval);
       sink(new Bacon.End());
     });
