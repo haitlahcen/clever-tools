@@ -43,6 +43,7 @@ function openWebSocket (url, authorization) {
     });
 
     return function () {
+      console.log("asking nicely for the WS to close: " + ws.readyState);
       ws.close();
     };
   });
